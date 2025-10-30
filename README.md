@@ -29,3 +29,104 @@ graph LR
     D --> E[reCAPTCHA V2]
     E --> F[Resolução Automática]
     F --> G[Captcha Resolvido]
+```
+📋 Pré-requisitos
+Node.js 18+ instalado
+
+- Conta no CapMonster Cloud
+
+- Chave API da CapMonster Cloud
+
+- Extensão CapMonster Cloud para navegador
+
+## ⚡ Instalação Rápida
+1. Clone e Instale as Dependências
+```bash
+# Navegue até a pasta do projeto
+cd CapMonster-Cloud-Integration-Challenge
+
+# Instale o Playwright
+npm init playwright
+
+# Instale as dependências do projeto
+npm install
+
+```
+
+## 2. Execução do Projeto
+```bash
+# Navegue para a pasta service
+cd service
+
+# Execute o projeto
+npm start
+```
+
+Configuração do Playwright
+O projeto utiliza Playwright configurado com a extensão CapMonster:
+
+```javascript
+const {chromium} = require("@playwright/test");
+ 
+//const rp = require("request-promise");
+const pathToExtension = require('path').join(__dirname, '../extensao/capmonster');
+const keycaptcha = "digite aqui  key";
+
+  let  browser = " " 
+async function run (){
+
+ 
+try {
+  
+  browser = await chromium.launchPersistentContext('', {
+    headless: false,
+    viewport: {"width": 1193, "height": 1013},
+    args: [
+      `--disable-extensions-except=${pathToExtension}`,
+      `--load-extension=${pathToExtension}`
+    ]
+  });
+
+```
+
+## 🔧 Uso do Projeto
+Testando no Zennolab Lessons
+O projeto está configurado para testar automaticamente no site Zennolab Lessons com foco no modelo reCAPTCHA V2.
+
+Para testar outros modelos:
+
+- Acesse https://lessons.zennolab.com/
+
+- Escolha o modelo de captcha desejado
+
+- Copie a URL do desafio
+
+- Modifique o arquivo de configuração
+
+ 
+## 📊 Modelos de Captcha Suportados
+O projeto foi testado com os seguintes modelos no Zennolab Lessons:
+
+- ✅ reCAPTCHA V2 (Testado e funcionando)
+
+- 🔄 reCAPTCHA V3
+
+ 
+
+Para testar outros modelos, substitua a URL no código:
+
+```javascript
+//  
+    await page.goto("https://lessons.zennolab.com/captchas/recaptcha/invisible.php?level=high", {timeout: 0});
+```
+
+## 🙋‍♂️ Suporte
+Documentação CapMonster: https://capmonster.cloud/documentacao
+
+Zennolab Lessons: https://lessons.zennolab.com/
+
+Issues: GitHub Issues
+
+Desenvolvido com ❤️ para o Desafio de Integração do CapMonster Cloud
+
+
