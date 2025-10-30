@@ -5,7 +5,7 @@ const pathToExtension = require('path').join(__dirname, '../extensao/capmonster'
 const keycaptcha = "digite aqui  key";
 
   let  browser = " " 
-async function run (Cpf, Senha){
+async function run (){
 
  
 try {
@@ -38,7 +38,7 @@ await page.goto(`chrome-extension://${id}/popup.html`, {timeout: 0});
 
   await page.click("#client-key-save-btn", {timeout: 0});
 
-    await page.goto("https://lessons.zennolab.com/captchas/recaptcha/invisible.php?level=high", {timeout: 0});
+    await page.goto("https://lessons.zennolab.com/captchas/recaptcha/v2_nosubmit.php?level=middle", {timeout: 0});
 
     await page.waitForSelector('[class="g-recaptcha submit"]', {timeout: 0})
     await page.locator('[class="g-recaptcha submit"]').click()
@@ -69,8 +69,6 @@ await page.goto(`chrome-extension://${id}/popup.html`, {timeout: 0});
 
 }
 
-// "37590729Bi$"
+ 
 
-//module.exports = run
-
-run ("14290184880", "18071212rA@")
+run ()
